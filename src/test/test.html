@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_add").click(function () {
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json",
+                    dataType:"json",
+                    data: '{"id":1,"name":"xixi","classnum":"123"}',
+                    url: "http://localhost:8080/stu/addOne"
+                })
+            });
+            $("#btn_upd").click(function () {
+                $.ajax({
+                    type: "post",
+                    data: "id=3&name=tiyi&classnum=129班",
+                    url: "http://localhost:8080/stu/update"
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+<div>
+    <div>
+        <form action="http://localhost:8080/stu/add" method="post">
+           学号： <input name="id" type="text"/>
+           姓名： <input name="name" type="text"/>
+           班级： <input name="classnum" type="text"/>
+            <input type="submit" value="form增加">
+        </form>
+    </div>
+    <div>
+        <button id="btn_add">增加</button>
+    </div>
+    <div>
+        <a href="http://localhost:8080/stu/delete/6">删除</a>
+    </div>
+    <div>
+        <button id="btn_upd">修改</button>
+    </div>
+    <div>
+        <a href="http://localhost:8080/stu/findOne/1">查询单个</a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/stu/findAll">查询所有</a>
+    </div>
+</div>
+</body>
+</html>

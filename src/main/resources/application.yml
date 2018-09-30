@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+mybatis:
+  typeAliasesPackage: com.restful.bo
+  mapperLocations: classpath:mapping/*.xml
