@@ -16,7 +16,9 @@ public class StuController {
 
     @PostMapping("/add")
     public String addOneStudent(Student student) {
+        //jpa 方式
         //this.stuService.addStudent(student);
+        //mybatis 方式
         this.stuService.addStudentByMybatis(student);
         return "success";
     }
