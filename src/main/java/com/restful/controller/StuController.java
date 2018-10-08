@@ -25,7 +25,9 @@ public class StuController {
 
     @PostMapping("/addOne")
     public void addOneStudentByAjax(@RequestBody Student student) {
+        // jpa
         //this.stuService.addStudent(student);
+        // mybaits
         this.stuService.addStudentByMybatis(student);
     }
 
