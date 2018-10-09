@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Student</title>
     <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="jquery/jsencrypt.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#btn_add").click(function () {
                 $.ajax({
                     type: "post",
                     contentType: "application/json",
-                    dataType:"json",
+                    dataType: "json",
                     data: '{"id":1,"name":"xixi","classnum":"123"}',
                     url: "http://localhost:8080/stu/addOne"
                 })
@@ -22,6 +23,17 @@
                     url: "http://localhost:8080/stu/update"
                 })
             });
+            $("#rsa_des").click(function () {
+                var key = "-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDH7xioadgx9gL/8JkOtstfxzG/2aUrm9zNByjaxQPrFHKpnCDITeqqKZwJshU1OyUJevUnl8jwlc/ZZbULtnZP0O0Wz2BuJSICX/UJguqphMzKn4rdLTnTpzGn/z+OUju9MVKGdu+o6cFXcloxB1FSqEDDZKHcm8ivHvD7254GhQIDAQAB-----END PUBLIC KEY-----";
+                var password = $("#pw").val();
+                var encrypt = new JSEncrypt();
+                encrypt.setPublicKey(key);
+                var encoded_pwd = encrypt.encrypt(password);
+                $.post({
+                    data:"pwd=" + encoded_pwd,
+                    url:"http://localhost:8080/stu/crypter"
+                })
+            });
         })
     </script>
 </head>
@@ -29,9 +41,9 @@
 <div>
     <div>
         <form action="http://localhost:8080/stu/add" method="post">
-           学号： <input name="id" type="text"/>
-           姓名： <input name="name" type="text"/>
-           班级： <input name="classnum" type="text"/>
+            学号： <input name="id" type="text"/>
+            姓名： <input name="name" type="text"/>
+            班级： <input name="classnum" type="text"/>
             <input type="submit" value="form增加">
         </form>
     </div>
@@ -49,6 +61,11 @@
     </div>
     <div>
         <a href="http://localhost:8080/stu/findAll">查询所有</a>
+    </div>
+    <hr/>
+    <div>
+        加密字符： <input id="pw" type="text">
+        <button id="rsa_des">前端rsa加密，后台rsa解密</button>
     </div>
 </div>
 </body>

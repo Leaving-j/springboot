@@ -2,6 +2,7 @@ package com.restful.controller;
 
 import com.restful.bo.Student;
 import com.restful.service.StuService;
+import com.restful.utils.RSADecrypter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,5 +55,12 @@ public class StuController {
     public List<Student> findAllStudent() {
         //return this.stuService.findAllStudent();
         return this.stuService.findAllStudent();
+    }
+
+    @PostMapping("/crypter")
+    public void decrypter(String pwd) {
+        pwd = pwd.replace(" ","+");
+        String str = RSADecrypter.decryptByPrivateKey(pwd,RSADecrypter.PRIVATEKEY_NEW,6);
+        System.out.println("RSA解密后的字符串："  + str);
     }
 }
