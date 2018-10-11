@@ -63,8 +63,8 @@ public class StuController {
 
     @PostMapping("/crypter")
     public void decrypter(String pwd) {
-        pwd = pwd.replace(" ","+");
-        String str = RSADecrypter.decryptByPrivateKey(pwd,RSADecrypter.PRIVATEKEY_NEW,6);
-        System.out.println("RSA解密后的字符串："  + str);
+        pwd = pwd.replace(" ", "+");
+        String str = RSADecrypter.decryptByPrivateKey(pwd, RSADecrypter.PRIVATEKEY_NEW, 6);
+        System.out.println("RSA解密后的字符串：" + str);
     }
 }
