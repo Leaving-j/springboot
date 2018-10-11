@@ -3,6 +3,7 @@ package com.restful.service.impl;
 import com.restful.bo.Student;
 import com.restful.dao.StuDao;
 import com.restful.dao.StuMybaitsDao;
+import com.restful.dao.StuRedisDao;
 import com.restful.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class StuServiceImpl implements StuService {
     private StuDao stuDao;
     @Autowired
     private StuMybaitsDao stuMybaitsDao;
+    @Autowired
+    private StuRedisDao stuRedisDao;
 
     @Override
     public void addStudent(Student student) {
@@ -65,5 +68,24 @@ public class StuServiceImpl implements StuService {
     @Override
     public List<Student> findAllStudentByMybatis() {
         return stuMybaitsDao.seletAll();
+    }
+
+    /**
+     * redis 方式存储
+     */
+
+    @Override
+    public void addOrUpdateStudentByRedis(Student student) {
+        stuRedisDao.insertOrUpdate(student);
+    }
+
+    @Override
+    public void deleteStudentByRedis(int id) {
+        stuRedisDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public String findStudentByIdByRedis(int id) {
+        return stuRedisDao.selectByPrimaryKey(id);
     }
 }

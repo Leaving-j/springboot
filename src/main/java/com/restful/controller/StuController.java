@@ -17,10 +17,12 @@ public class StuController {
 
     @PostMapping("/add")
     public String addOneStudent(Student student) {
-        //jpa 方式
+        // jpa 方式
         //this.stuService.addStudent(student);
-        //mybatis 方式
-        this.stuService.addStudentByMybatis(student);
+        // mybatis 方式
+        //this.stuService.addStudentByMybatis(student);
+        // redis 方式
+        this.stuService.addOrUpdateStudentByRedis(student);
         return "success";
     }
 
@@ -35,7 +37,8 @@ public class StuController {
     @GetMapping("/delete/{id}")
     public void deleteStudent(@PathVariable("id") int id) {
         // this.stuService.deleteStudent(id);
-        this.stuService.deleteStudentByMybatis(id);
+        // this.stuService.deleteStudentByMybatis(id);
+        this.stuService.deleteStudentByRedis(id);
     }
 
     @PostMapping("/update")
@@ -45,10 +48,11 @@ public class StuController {
     }
 
     @GetMapping("/findOne/{id}")
-    public Student findStudentById(@PathVariable("id") int id) {
+    public String findStudentById(@PathVariable("id") int id) {
         /*Optional<Student> studentById = this.stuService.findStudentById(id);
         return studentById.get();*/
-        return this.stuService.findStudentByIdByMybatis(id);
+        //return this.stuService.findStudentByIdByMybatis(id);
+        return this.stuService.findStudentByIdByRedis(id);
     }
 
     @GetMapping("/findAll")

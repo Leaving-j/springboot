@@ -27,4 +27,12 @@ public interface StuService {
     public Student findStudentByIdByMybatis(int id);
 
     public List<Student> findAllStudentByMybatis();
+
+    // redis
+    public void addOrUpdateStudentByRedis(Student student);
+
+    public void deleteStudentByRedis(int id);
+
+    public String findStudentByIdByRedis(int id);
+
 }

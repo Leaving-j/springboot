@@ -12,5 +12,15 @@ spring:
       ddl-auto: update
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
 mybatis:
-  typeAliasesPackage: com.restful.bo
-  mapperLocations: classpath:mapping/*.xml
+    typeAliasesPackage: com.restful.bo
+    mapperLocations: classpath:mapping/*.xml
+redis:
+    host: 127.0.0.1
+    post: 6379
+    password:
+    pool:
+          max-idle: 8
+          min-idle: 0
+          max-active: 8
+          max-wait: -1
+    timeout: 2000
