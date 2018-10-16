@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/stu")
 public class StuController {
-
+    //添加分支
     @Autowired
     private StuService stuService;
 
