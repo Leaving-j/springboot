@@ -1,15 +1,17 @@
-package com.restful;
+package com.restful.mq.client;
 
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * 消息接收者
+ * 消息发送者
  */
 
-public class Recv {
+public class Send {
 
     private final static String QUEUE_NAME = "hello";
 
@@ -24,13 +26,11 @@ public class Recv {
         Channel channel = connection.createChannel();
         // 声明队列
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        Consumer consumer = new DefaultConsumer(channel) {
-            @Override
-            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                String message = new String(body, "UTF-8");
-                System.out.println(" [C] Received '" + message + "'");
-            }
-        };
-        channel.basicConsume(QUEUE_NAME, true, consumer);
+        String message = "send message";
+        // 发布消息
+        channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
+        System.out.println(" [S] Sent '" + message + "'");
+        channel.close();
+        connection.close();
     }
 }
