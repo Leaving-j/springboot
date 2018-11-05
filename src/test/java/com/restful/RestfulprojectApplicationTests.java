@@ -32,5 +32,4 @@ public class RestfulprojectApplicationTests {
         tut1Sender.sendPayment();
     }
 
-
 }

@@ -31,7 +31,7 @@
                 var encoded_pwd = encrypt.encrypt(password);
                 $.post({
                     data:"pwd=" + encoded_pwd,
-                    url:"http://localhost:8080/stu/crypter"
+                    url:"http://localhost:8080/cry/crypter"
                 })
             });
         })
