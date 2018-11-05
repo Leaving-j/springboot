@@ -1,4 +1,5 @@
 spring:
+  #数据库连接
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8
     driverClassName: com.mysql.jdbc.Driver
@@ -7,15 +8,26 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   profiles:
      active: usage_message
+  #jpa
   jpa:
     database: MySQL
     show-sql: true
     hibernate:
       ddl-auto: update
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+  #rabitmq连接
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: 123456
+#mybatis配置
 mybatis:
     typeAliasesPackage: com.restful.bo
     mapperLocations: classpath:mapping/*.xml
+
+#redis连接
 redis:
     host: 127.0.0.1
     post: 6379
