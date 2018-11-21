@@ -19,6 +19,12 @@ public class StuController {
     @Autowired
     private MqSender mqSender;
 
+    /**
+     * 增加
+     *
+     * @param student
+     * @return
+     */
     @PostMapping("/add")
     public String addOneStudent(Student student) {
         // jpa 方式
@@ -30,6 +36,12 @@ public class StuController {
         return "success";
     }
 
+    /**
+     * 增加
+     *
+     * @param student
+     * @return
+     */
     @PostMapping("/addOne")
     public void addOneStudentByAjax(@RequestBody Student student) {
         // jpa
@@ -38,6 +50,12 @@ public class StuController {
         this.stuService.addStudentByMybatis(student);
     }
 
+    /**
+     * 删除
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/delete/{id}")
     public void deleteStudent(@PathVariable("id") int id) {
         // this.stuService.deleteStudent(id);
@@ -45,12 +63,23 @@ public class StuController {
         this.stuService.deleteStudentByRedis(id);
     }
 
+    /**
+     * 修改
+     *
+     * @param student
+     */
     @PostMapping("/update")
     public void updateStudent(Student student) {
         //this.stuService.updateStudent(student);
         this.stuService.updateStudentByMybatis(student);
     }
 
+    /**
+     * 通过id查询
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/findOne/{id}")
     public String findStudentById(@PathVariable("id") int id) {
         // jpa
