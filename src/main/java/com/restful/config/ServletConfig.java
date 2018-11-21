@@ -1,5 +1,6 @@
 package com.restful.config;
 
+import com.restful.filter.LoginFilter;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  **/
 @Configuration
 public class ServletConfig implements WebMvcConfigurer {
+
+
+    @Bean
+    public LoginFilter loginFilter() {
+        return new LoginFilter();
+    }
+
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         configurer.setUseRegisteredSuffixPatternMatch(true);
@@ -23,6 +31,8 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
+           registry.addInterceptor(loginFilter())
+                   .addPathPatterns("/**")
+                   .excludePathPatterns("/loginCtrl/login");
     }
 }

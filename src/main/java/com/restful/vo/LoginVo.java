@@ -9,6 +9,15 @@ package com.restful.vo;
 public class LoginVo {
     private String userName;
     private String pwd;
+    private int length;
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
 
     public String getUserName() {
         return userName;
