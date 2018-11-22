@@ -17,7 +17,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  * @date 2018.11.05
  */
 @Configuration
-public class RedisUtils {
+public class RedisConfig {
 
     @Bean
     @SuppressWarnings({"rawtypes", "unchecked"})

@@ -78,11 +78,11 @@
             <version>2.8.0</version>
         </dependency>
         <!--热更-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>false</optional>
-        </dependency>
+        </dependency>-->
         <!--mq-->
         <dependency>
             <groupId>com.rabbitmq</groupId>
