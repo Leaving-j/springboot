@@ -20,7 +20,7 @@ public class LoginFilter implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        LoginVo vo = (LoginVo) request.getSession().getAttribute("loginUser");
+      /*  LoginVo vo = (LoginVo) request.getSession().getAttribute("loginUser");
         if (vo != null) {
             return true;
         } else {
@@ -33,7 +33,8 @@ public class LoginFilter implements HandlerInterceptor {
                 e.printStackTrace();
             }
             return false;
-        }
+        }*/
+      return true;
     }
 
     @Override
