@@ -14,7 +14,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
 
   #rabitmq连接
   rabbitmq:
@@ -22,27 +21,19 @@ spring:
     port: 5672
     username: guest
     password: 123456
+
+    #redis连接
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 60s
+
 #mybatis配置
 mybatis:
     typeAliasesPackage: com.restful.bo
     mapperLocations: classpath:mapping/*.xml
 
-#redis连接
-redis:
-    host: 127.0.0.1
-    post: 6379
-    password:
-    pool:
-          max-idle: 8
-          min-idle: 0
-          max-active: 8
-          max-wait: -1
-    timeout: 2000
-
 logging:
   level:
     org: ERROR
-
-tutorial:
-  client:
-    duration: 10000
