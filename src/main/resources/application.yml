@@ -1,7 +1,7 @@
 spring:
   #数据库连接
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8&serverTimezone=GMT%2B8
     driverClassName: com.mysql.jdbc.Driver
     username: root
     password: 123456
@@ -28,12 +28,17 @@ spring:
     port: 6379
     password:
     timeout: 60s
-
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/jsp/
+  thymeleaf:
+    cache: false
+    enabled: false
 #mybatis配置
 mybatis:
     typeAliasesPackage: com.restful.bo
     mapperLocations: classpath:mapping/*.xml
 
 logging:
-  level:
-    org: ERROR
+  config: classpath:log4j2.xml

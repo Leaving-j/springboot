@@ -4,17 +4,19 @@ import com.google.gson.Gson;
 import com.restful.bo.Student;
 import com.restful.mq.MqSender;
 import com.restful.service.StuService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/stu")
 public class StuController {
-    //添加分支
+
+    private static final Logger logger = LogManager.getLogger(StuController.class);
+
     @Autowired
     private StuService stuService;
 
@@ -100,6 +102,7 @@ public class StuController {
      */
     @GetMapping("/findAll")
     public List<Student> findAllStudent() {
+        logger.info("查询所有列表");
         //return this.stuService.findAllStudent();
         return this.stuService.findAllStudent();
     }
