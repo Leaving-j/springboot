@@ -1,6 +1,8 @@
 package com.restful;
 
+import com.restful.quartz.SampleJob;
 import org.mybatis.spring.annotation.MapperScan;
+import org.quartz.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -42,4 +44,6 @@ public class RestfulprojectApplication extends SpringBootServletInitializer {
         source.registerCorsConfiguration("/**", buildConfig()); // 4
         return new CorsFilter(source);
     }
+
+
 }

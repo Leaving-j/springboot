@@ -35,6 +35,7 @@ spring:
   thymeleaf:
     cache: false
     enabled: false
+
 #mybatis配置
 mybatis:
     typeAliasesPackage: com.restful.bo
