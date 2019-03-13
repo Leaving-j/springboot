@@ -6,6 +6,14 @@ spring:
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filter:
+        slf4j:
+          enabled: true
+          statement-create-after-log-enabled: false
+          statement-close-after-log-enabled: false
+          result-set-open-after-log-enabled: false
+          result-set-close-after-log-enabled: false
   profiles:
      active: usage_message
   #jpa
@@ -20,7 +28,7 @@ spring:
     host: 127.0.0.1
     port: 5672
     username: guest
-    password: 123456
+    password: guest
 
     #redis连接
   redis:
@@ -43,3 +51,5 @@ mybatis:
 
 logging:
   config: classpath:log4j2.xml
+
+
