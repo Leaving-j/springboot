@@ -10,3 +10,5 @@
 > 集成redis缓存库
  
 > 集成log4j2日志
+
+> 集成jsp和thyleaf
