@@ -12,3 +12,5 @@
 > 集成log4j2日志
 
 > 集成jsp和thyleaf
+
+> 集成quartz
